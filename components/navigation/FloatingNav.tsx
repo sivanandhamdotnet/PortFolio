@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Download } from "lucide-react";
 
 interface NavItem {
   name: string;
@@ -28,24 +28,19 @@ export default function FloatingNav() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Determine scrolled past hero
       if (currentScrollY > 120) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Hide/reveal on scroll direction
       if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
-        // Scrolling down
         setIsVisible(false);
       } else {
-        // Scrolling up
         setIsVisible(true);
       }
       lastScrollY.current = currentScrollY;
 
-      // Determine active section
       const sections = ["about", "experience", "work", "stack", "contact"];
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -83,7 +78,7 @@ export default function FloatingNav() {
       >
         <nav
           aria-label="Main Navigation"
-          className={`flex items-center justify-between gap-6 px-5 py-2.5 transition-all duration-300 border ${
+          className={`flex items-center justify-between gap-4 sm:gap-6 px-4 sm:px-5 py-2.5 transition-all duration-300 border ${
             isScrolled
               ? "bg-forest-900/90 text-bone-100 border-forest-700/80 backdrop-blur-md shadow-2xl"
               : "bg-bone-100/85 text-forest-900 border-forest-900/15 backdrop-blur-sm"
@@ -101,7 +96,7 @@ export default function FloatingNav() {
             <span className="w-2 h-2 rounded-full bg-lime-accent group-hover:scale-125 transition-transform" />
             <span className="font-bold tracking-widest">SIVANANDHAM S</span>
             <span
-              className={`hidden md:inline-block text-[10px] px-1.5 py-0.5 border ${
+              className={`hidden lg:inline-block text-[10px] px-1.5 py-0.5 border ${
                 isScrolled
                   ? "border-forest-700 text-bone-400"
                   : "border-forest-900/20 text-forest-700"
@@ -143,8 +138,25 @@ export default function FloatingNav() {
             })}
           </div>
 
-          {/* CTA Link & Mobile Trigger */}
-          <div className="flex items-center gap-3">
+          {/* CTA Link, Resume Download & Mobile Trigger */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Download Resume Quick Action */}
+            <a
+              href="/Sivanandham_S_Resume.pdf"
+              download="Sivanandham_S_Resume.pdf"
+              data-cursor="magnetic"
+              title="Download Sivanandham S Resume (PDF)"
+              className={`inline-flex items-center gap-1.5 font-mono text-xs px-2.5 sm:px-3 py-1.5 border transition-all ${
+                isScrolled
+                  ? "border-clay-500/70 text-clay-400 hover:border-lime-accent hover:text-lime-accent bg-forest-950/40"
+                  : "border-forest-900/20 text-clay-600 hover:border-clay-500 hover:text-clay-500 bg-bone-200/60 font-semibold"
+              }`}
+            >
+              <Download className="w-3.5 h-3.5 text-clay-500" />
+              <span className="hidden sm:inline">RESUME</span>
+              <span className="text-[10px] opacity-70">PDF</span>
+            </a>
+
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
@@ -196,7 +208,7 @@ export default function FloatingNav() {
             </button>
           </div>
 
-          <nav className="flex flex-col gap-6 my-auto">
+          <nav className="flex flex-col gap-5 my-auto">
             {NAV_ITEMS.map((item, idx) => (
               <a
                 key={item.name}
@@ -211,6 +223,19 @@ export default function FloatingNav() {
                 <ArrowUpRight className="w-5 h-5 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
               </a>
             ))}
+
+            {/* Mobile Resume Download Action */}
+            <a
+              href="/Sivanandham_S_Resume.pdf"
+              download="Sivanandham_S_Resume.pdf"
+              className="mt-4 flex items-center justify-between p-4 bg-forest-900 border border-clay-500/70 text-bone-100 font-mono text-xs hover:border-lime-accent transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <Download className="w-4 h-4 text-clay-500" />
+                <span className="font-bold tracking-wider">DOWNLOAD SIVANANDHAM S RESUME</span>
+              </div>
+              <span className="text-lime-accent text-[10px]">PDF · 261 KB</span>
+            </a>
           </nav>
 
           <div className="border-t border-forest-800 pt-5 flex flex-col gap-3 font-mono text-xs text-bone-400">

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, Mail, Phone, ExternalLink, Copy, Check } from "lucide-react";
+import { ArrowUpRight, Mail, Phone, ExternalLink, Copy, Check, Download } from "lucide-react";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -46,8 +46,8 @@ export default function ContactSection() {
           </div>
         </div>
 
-        {/* Large Magnetic CTA */}
-        <div className="flex flex-wrap items-center gap-6">
+        {/* Large Magnetic CTA Group */}
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <a
             href={`mailto:${email}?subject=Engineering%20Inquiry%20%E2%80%94%20Backend%20Systems`}
             data-cursor="magnetic"
@@ -55,6 +55,16 @@ export default function ContactSection() {
           >
             <span>START A CONVERSATION</span>
             <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-transform" />
+          </a>
+
+          <a
+            href="/Sivanandham_S_Resume.pdf"
+            download="Sivanandham_S_Resume.pdf"
+            data-cursor="magnetic"
+            className="inline-flex items-center gap-3 px-7 py-5 sm:py-6 border-2 border-clay-500 bg-clay-500/10 text-forest-900 font-display text-base sm:text-xl font-bold uppercase tracking-tight hover:bg-clay-500 hover:text-bone-50 transition-all duration-300 shadow-xl"
+          >
+            <Download className="w-5 h-5 text-clay-500 hover:text-bone-50" />
+            <span>DOWNLOAD RESUME (PDF)</span>
           </a>
 
           <button
@@ -120,12 +130,17 @@ export default function ContactSection() {
           </div>
 
           <div className="p-5 bg-bone-50 border border-forest-900/10">
-            <div className="text-[10px] text-forest-600 uppercase tracking-widest mb-1">
-              CURRENT LOCATION
+            <div className="text-[10px] text-forest-600 uppercase tracking-widest mb-1 flex items-center gap-1.5">
+              <Download className="w-3.5 h-3.5 text-clay-500" />
+              <span>OFFLINE SPECIFICATION</span>
             </div>
-            <div className="font-bold text-forest-900">
-              Chennai, Tamil Nadu, India
-            </div>
+            <a
+              href="/Sivanandham_S_Resume.pdf"
+              download="Sivanandham_S_Resume.pdf"
+              className="font-bold text-clay-600 hover:text-forest-900 transition-colors"
+            >
+              Sivanandham_S_Resume.pdf
+            </a>
           </div>
         </div>
       </div>

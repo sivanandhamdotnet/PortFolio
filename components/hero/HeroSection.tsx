@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowDown, Cpu, Network, ShieldCheck } from "lucide-react";
+import { ArrowDown, Cpu, Network, ShieldCheck, Download } from "lucide-react";
 import SystemTopology from "@/components/visual/SystemTopology";
 import { gsap, isReducedMotion } from "@/lib/animations/gsap";
 
@@ -163,8 +163,35 @@ export default function HeroSection({ introFinished }: HeroSectionProps) {
             </p>
           </div>
 
+          {/* CTA & Direct Resume Download */}
+          <div className="hero-title-line flex flex-wrap items-center gap-3 pt-6">
+            <a
+              href="/Sivanandham_S_Resume.pdf"
+              download="Sivanandham_S_Resume.pdf"
+              data-cursor="magnetic"
+              className="inline-flex items-center gap-2.5 px-5 py-3 bg-forest-900 text-bone-100 font-mono text-xs font-bold uppercase tracking-wider border border-forest-800 hover:bg-clay-500 hover:border-clay-500 transition-all duration-300 shadow-xl group"
+            >
+              <Download className="w-4 h-4 text-lime-accent group-hover:translate-y-0.5 transition-transform" />
+              <span>DOWNLOAD RESUME</span>
+              <span className="text-[10px] text-bone-400 font-normal">[PDF · 261 KB]</span>
+            </a>
+
+            <a
+              href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              data-cursor="magnetic"
+              className="inline-flex items-center gap-2 px-4 py-3 bg-bone-200/80 text-forest-900 font-mono text-xs tracking-wider border border-forest-900/20 hover:border-forest-900 hover:bg-bone-200 transition-colors"
+            >
+              <span>INSPECT ARCHITECTURES</span>
+              <ArrowDown className="w-3.5 h-3.5 text-clay-500" />
+            </a>
+          </div>
+
           {/* Architectural System Badges */}
-          <div className="hero-title-line flex flex-wrap gap-2 pt-6 font-mono text-xs">
+          <div className="hero-title-line flex flex-wrap gap-2 pt-5 font-mono text-xs">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bone-200/80 border border-forest-900/15 text-forest-900">
               <Cpu className="w-3.5 h-3.5 text-clay-500" />
               <span>PYTHON · DJANGO · DRF</span>

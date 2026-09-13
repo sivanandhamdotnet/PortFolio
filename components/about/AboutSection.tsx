@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { CheckCircle2, Shield, Zap, Layers } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Layers, Download } from "lucide-react";
 import { gsap, isReducedMotion } from "@/lib/animations/gsap";
 
 export default function AboutSection() {
@@ -137,23 +137,35 @@ export default function AboutSection() {
               AI-powered document processing, workflow automation and data-driven applications.
             </p>
 
-            <div className="pt-6 border-t border-forest-800/80 flex flex-wrap gap-4 text-xs font-mono text-bone-300">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
-                <span>PostgreSQL & MongoDB</span>
+            <div className="pt-6 border-t border-forest-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-bone-300">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
+                  <span>PostgreSQL & MongoDB</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
+                  <span>OAuth 2.0 & JWT</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
+                  <span>Celery Tasks</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
+                  <span>AI Document OCR</span>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
-                <span>OAuth 2.0 & JWT Protocols</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
-                <span>Celery & Asynchronous Queues</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-lime-accent" />
-                <span>OCR & AI Document Processing</span>
-              </div>
+
+              <a
+                href="/Sivanandham_S_Resume.pdf"
+                download="Sivanandham_S_Resume.pdf"
+                data-cursor="magnetic"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-forest-950 text-lime-accent border border-lime-accent/60 font-mono text-xs hover:bg-lime-accent hover:text-forest-950 transition-colors flex-shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>DOWNLOAD RESUME</span>
+              </a>
             </div>
           </div>
 
